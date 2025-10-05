@@ -15,7 +15,7 @@ To ensure consistency throughout the project, please follow these code styles gu
 
 ## Tech Stack
 XfinityDeviceUnpauser's tech stack is based on the following dependencies:
-- **Module Name**: Utilize <tech> for <purpose>
+- **Language**: Utilize `Python` for programming.
 
 ## Testing
 To ensure the codebase remains reliable and maintainable, I follow a rigorous testing approach:
