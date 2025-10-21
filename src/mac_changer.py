@@ -1,4 +1,5 @@
 """Module to create a new MAC address by incrementing the last three octets of the current MAC address."""
+
 from uuid import getnode as get_mac
 
 
@@ -18,7 +19,7 @@ def get_octets_from_range(mac_address: str, octet_start: int, octet_end: int) ->
     """
     octet_start = octet_start * 2 + 2
     octet_end = octet_end * 2 + 2
-    return mac_address[octet_start: octet_end]
+    return mac_address[octet_start:octet_end]
 
 
 def increment_octet(octets: str) -> str:
