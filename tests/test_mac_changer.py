@@ -22,6 +22,12 @@ def test_octets_incrementer():
 
 
 def test_new_mac_address():
-    new_address = new_mac_address()
+    new_address = new_mac_address(False)
     assert len(new_address) == 12
     assert new_address != mac_address
+
+def test_new_mac_address_with_colons():
+    new_address = new_mac_address(True)
+    assert len(new_address) == 17
+    assert new_address.count(":") == 5
+    assert new_address.replace(":", "") != mac_address
