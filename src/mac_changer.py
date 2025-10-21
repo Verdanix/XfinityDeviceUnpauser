@@ -35,7 +35,17 @@ def increment_octet(octets: str) -> str:
     return incremented_hex
 
 
-def new_mac_address():
+def add_colons_to_mac(mac: str) -> str:
+    """Format a MAC address string by adding colons between every two characters.
+    Param:
+        mac (str): The MAC address string without colons.
+    Returns:
+        str: The formatted MAC address with colons.
+    """
+    return ":".join(mac[i : i + 2] for i in range(0, len(mac), 2))
+
+
+def new_mac_address(colons=True) -> str:
     """Generate a new MAC address by incrementing the last three octets of the current MAC address.
     Returns:
         str: The new MAC address in hexadecimal format.
@@ -45,4 +55,6 @@ def new_mac_address():
     last_three_octets = get_octets_from_range(mac_address, 3, 6)
     incremented_last_octets = increment_octet(last_three_octets)
     new_mac = first_three_octets + incremented_last_octets
+    if colons:
+        new_mac = add_colons_to_mac(new_mac)
     return new_mac
