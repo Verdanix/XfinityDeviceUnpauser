@@ -1,4 +1,4 @@
-from src.mac_changer import get_mac_address, get_octets_from_range, new_mac_address
+from src.wireless import get_mac_address, get_octets_from_range, new_mac_address
 
 mac_address = get_mac_address()
 
