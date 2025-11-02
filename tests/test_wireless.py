@@ -9,8 +9,8 @@ def test_octets_retriever():
     assert len(first_3_octets) == 6
     assert len(last_3_octets) == 6
     assert first_3_octets != last_3_octets
-    assert first_3_octets == mac_address[2:8]
-    assert last_3_octets == mac_address[8:14]
+    assert first_3_octets == mac_address[0:6]
+    assert last_3_octets == mac_address[6:12]
 
 
 def test_octets_incrementer():

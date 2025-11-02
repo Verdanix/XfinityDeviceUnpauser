@@ -1,11 +1,26 @@
 """Module to create a new MAC address by incrementing the last three octets of the current MAC address."""
 
-from uuid import getnode as get_mac
+import netifaces as ni
 
 
-def get_mac_address():
-    """Retrieve the current MAC address in hexadecimal format."""
-    return hex(get_mac())
+def get_default_gateway() -> str:
+    """Retrieves the default gateway name.
+    Returns:
+        str: The default gateway name.
+    """
+    gateways = ni.gateways()
+    gateway = gateways["default"][ni.AF_INET][1]
+    return gateway
+
+
+def get_mac_address() -> str:
+    """Retrieve the current MAC address in hexadecimal format.
+    Returns:
+        str: The current MAC address without colons.
+    """
+    gateway = get_default_gateway()
+    addresses = ni.ifaddresses(gateway)
+    return addresses[ni.AF_LINK][0]["addr"].replace(":", "")
 
 
 def get_octets_from_range(mac_address: str, octet_start: int, octet_end: int) -> str:
@@ -17,8 +32,8 @@ def get_octets_from_range(mac_address: str, octet_start: int, octet_end: int) ->
     Returns:
         str: The extracted octets as a concatenated string.
     """
-    octet_start = octet_start * 2 + 2
-    octet_end = octet_end * 2 + 2
+    octet_start = octet_start * 2
+    octet_end = octet_end * 2
     return mac_address[octet_start:octet_end]
 
 
