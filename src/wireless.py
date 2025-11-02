@@ -4,9 +4,9 @@ import netifaces as ni
 
 
 def get_default_gateway() -> str:
-    """Retrieves the default gateway name.
+    """Retrieves the default network interface name.
     Returns:
-        str: The default gateway name.
+        str: The network interface name.
     """
     gateways = ni.gateways()
     gateway = gateways["default"][ni.AF_INET][1]
