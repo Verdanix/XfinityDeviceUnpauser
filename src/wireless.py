@@ -3,7 +3,7 @@
 import netifaces as ni
 
 
-def get_default_gateway() -> str:
+def get_default_interface_name() -> str:
     """Retrieves the default network interface name.
     Returns:
         str: The network interface name.
@@ -18,7 +18,7 @@ def get_mac_address() -> str:
     Returns:
         str: The current MAC address without colons.
     """
-    gateway = get_default_gateway()
+    gateway = get_default_interface_name()
     addresses = ni.ifaddresses(gateway)
     return addresses[ni.AF_LINK][0]["addr"].replace(":", "")
 
